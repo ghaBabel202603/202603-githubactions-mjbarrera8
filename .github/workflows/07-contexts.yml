@@ -1,7 +1,8 @@
 name: 07 - Contexts
-run-name: 07 - Contexts | DEBUG - ${{ inputs.debug }}
+run-name: 07 - Contexts | DEBUG - ${{ github.event_name }}
 
 env:
+    
   MY_WORKFLOW_VAR: "workflow"
   MY_OVERWRITTEN_VAR: "workflow"
 
@@ -17,7 +18,7 @@ jobs:
   echo:
     runs-on: ubuntu-latest
     env:
-      DEBUG_MODE: ${{ inputs.debug }}
+      DEBUG_MODE: false
 
     steps:
       - name: Show Info
