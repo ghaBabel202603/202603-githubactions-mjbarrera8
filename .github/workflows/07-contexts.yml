@@ -1,6 +1,9 @@
 name: 07 - Contexts
 run-name: 07 - Contexts | DEBUG - ${{ inputs.debug }}
 
+env:
+    MY_WORKFLOW_VAR: 'workflow'
+    MY_OVERWRITTEN_VAR: 'workflow'
 on:
     workflow_dispatch:
         inputs:
@@ -26,3 +29,15 @@ jobs:
             - name: "Retrieve Variable"
               run: |
                     echo "Valor de MY_VAR: ${{ vars.MY_VAR }}"
+                    - name: "Print Env Variables"
+            - name: "Print Env Variables"
+              env:
+                    MY_OVERWRITTEN_VAR: 'step'
+              run: |
+                    echo "Workflow env: $MY_WORKFLOW_VAR"
+                    echo "Overwritten env:: $MY_OVERWRITTEN_VAR"
+
+            - name: "Print Env Variables by def."
+              run: |
+                    echo "Workflow env: $MY_WORKFLOW_VAR"
+                    echo "Overwritten env:: $MY_OVERWRITTEN_VAR"
