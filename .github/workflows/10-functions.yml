@@ -2,10 +2,16 @@ name: 10 - Functions
 on:
     pull_request:
     workflow_dispatch:
+      inputs:
+        env_selector:
+          description: "enviroment selector"
+          type: environment
+          required: true
 
 jobs:
     demo:
       runs-on: ubuntu-latest
+      environment: ${{ inputs.env_selector }}
       steps:
         - name: Failing step
           run: |
