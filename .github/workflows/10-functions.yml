@@ -1,0 +1,21 @@
+name: 10 - Functions
+on:
+    pull_request:
+    workflow_dispatch:
+
+jobs:
+    demo:
+      runs-on: ubuntu-latest
+      steps:
+        - name: Failing step
+          run: |
+            exit 1
+        - name: Run on success
+          if: success()
+          run: echo "This step runs only if the previous step succeeded."
+        - name: Always run step
+          if: always()
+          run: echo "This step runs regardless of the previous step's outcome."
+        - name: Bug step
+          if: ${{contains(github.event.pull_request.title, 'fix')}}
+          run: echo "This step runs only if the pull request title contains 'fix'."
