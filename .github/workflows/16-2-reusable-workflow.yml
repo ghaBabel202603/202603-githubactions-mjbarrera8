@@ -3,7 +3,7 @@ on:
   workflow_dispatch:
 jobs:
   deploy:
-    uses: ./.github/workflows/16-1-reusable-workflow.yaml
+    uses: ./.github/workflows/16-1-reusable-workflow.yml
     with:
       target-directory: './react-app/build'
   print-outputs:
