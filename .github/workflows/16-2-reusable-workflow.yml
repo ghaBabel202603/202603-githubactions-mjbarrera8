@@ -3,7 +3,7 @@ on:
   workflow_dispatch:
 jobs:
   deploy:
-    uses: a-esmoris/github-actions-reusable-workflow/.github/workflows/16-1-reusable-workflow.yml@main
+    uses: a-esmoris/misc/.github/workflows/16-1-reusable-workflow.yaml@main
     with:
       target-directory: './react-app/build'
   print-outputs:
