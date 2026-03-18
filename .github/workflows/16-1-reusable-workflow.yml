@@ -8,8 +8,10 @@ on:
         type: string
     outputs:
       build-status:
+        value: ${{ jobs.deploy.outputs.build-status }}
         description: 'The status of the build process'
       url:
+        value: ${{ jobs.deploy.outputs.url }}
         description: 'The url of the deployed version'
 jobs:
   deploy:
