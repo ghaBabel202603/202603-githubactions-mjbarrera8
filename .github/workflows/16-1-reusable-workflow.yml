@@ -16,6 +16,7 @@ on:
 jobs:
   deploy:
     runs-on: ubuntu-latest
+    continue-on-error: true
     outputs:
       build-status: ${{ steps.build.outputs.build-status }}
       url: ${{ steps.deploy.outputs.url }}
@@ -32,4 +33,5 @@ jobs:
         run: |
           echo "Deploying build artifacts"
           echo "url=https://www.google.com" >> $GITHUB_OUTPUT
-    
+      - name: Fail on exit
+        run: exit -1
