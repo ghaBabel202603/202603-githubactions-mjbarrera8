@@ -28,7 +28,7 @@ jobs:
       - name: Setup Node and NPM Dependencies
         uses: ./.github/actions/composite-cache-deps
         with:
-          node-version: '16'
+          node-version: '20'
           cache-deps: 'true'
       - name: Test
         run: npm run test
