@@ -1,0 +1,36 @@
+name: 17 - 1 - Custom Actions - Composite
+
+run-name: 17.1 - Custom Actions - Composite - ${{ inputs.target-env }}
+
+on:
+  workflow_dispatch:
+    inputs:
+      target-env:
+        description: 'Select the target environment'
+        required: true
+        default: 'dev'
+        type: choice
+        options:
+          - dev
+          - prod
+env:
+  WORKING_DIRECTORY: 17-custom-actions/my-app
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: ${{ env.WORKING_DIRECTORY }}
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v6
+      - name: Setup Node and NPM Dependencies
+        uses: ./.github/actions/composite-cache-deps
+        with:
+          node-version: '16'
+          cache-deps: 'true'
+      - name: Test
+        run: npm run test
+      - name: Build
+        run: npm run build
