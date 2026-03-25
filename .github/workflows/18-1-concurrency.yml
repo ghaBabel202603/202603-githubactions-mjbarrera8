@@ -2,7 +2,8 @@ name: 18 - 1 - Managing Concurrency
 on:
   workflow_dispatch:
 concurrency:
-  group: ${{ github.workflow }}-${{ github.ref }}
+  group: ${{ github.workflow }}-slow-greet
+  cancel-in-progress: true
 jobs:
   slow-greet:
     runs-on: ubuntu-latest
